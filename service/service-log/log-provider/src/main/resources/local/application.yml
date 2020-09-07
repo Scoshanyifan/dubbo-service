@@ -1,0 +1,38 @@
+dubbo:
+  application:
+    name: project-log-provider
+  protocol:
+    name: dubbo
+    port: 30001
+  registry:
+    protocol: zookeeper
+    address: 127.0.0.1:2181
+  scan:
+    basePackages: com.scosyf.dubbo.log.provider.impl
+
+spring:
+  application:
+    name: project-log
+  data:
+    mongodb:
+#      uri: mongodb://project:project@localhost:27017/project
+      uri: mongodb://project:project@localhost:28017,localhost:28018,localhost:28019/project
+      options:
+        min-connections-per-host: 20
+        max-connections-per-host: 20
+        threads-allowed-to-block-for-connection-multiplier: 5
+        server-selection-timeout: 30000
+        max-wait-time: 120000
+        max-connection-idel-time: 0
+        max-connection-life-time: 0
+        connect-timeout: 10000
+        socket-timeout: 0
+        socket-keep-alive: false
+        ssl-enabled: false
+        ssl-invalid-host-name-allowed: false
+        always-use-m-beans: false
+        heartbeat-socket-timeout: 20000
+        heartbeat-connect-timeout: 20000
+        min-heartbeat-frequency: 500
+        heartbeat-frequency: 10000
+        local-threshold: 15
